@@ -22,13 +22,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Install dependencies
-        run: dotnet restore Bank.sln
+        run: dotnet restore Bank/Bank.sln
 
       - name: Build solution
-        run: dotnet build Bank.sln --configuration Release --no-restore
+        run: dotnet build Bank/Bank.sln --configuration Release --no-restore
 
       - name: Run unit tests with coverage
-        run: dotnet test Bank.sln --configuration Release --collect:"XPlat Code Coverage" --logger trx
+        run: dotnet test Bank/Bank.sln --configuration Release --collect:"XPlat Code Coverage" --logger trx
 
       # ====== SonarCloud Analysis ======
       - name: SonarCloud Scan
