@@ -1,44 +1,17 @@
-```mermaid
-classDiagram
+# Diseño del Patrón Factory Method
 
-class CreditCardFactoryMethod
-CreditCardFactoryMethod : +CreateProduct() ICreditCard
+Este documento describe el diseño del patrón **Factory Method** aplicado al dominio de las tarjetas de crédito.  
 
-class CreditCardFactory
-CreditCardFactory : +GetCreditCard() ICreditCard
+El objetivo del patrón es **definir una interfaz para crear objetos**, pero dejar que las subclases decidan qué clase instanciar.  
+De esta manera se promueve la **desacoplación** entre el código cliente y las clases concretas que implementan la interfaz común.
 
-class ICreditCard
-ICreditCard : +GetCardType() String
-ICreditCard : +GetCreditLimit() Int
-ICreditCard : +GetAnnualCharge() Int
+El diseño incluye los siguientes elementos principales:
+- **ICreditCard**: Interfaz común para todas las tarjetas de crédito.
+- **MoneyBack, Platinum y Titanium**: Implementaciones concretas de tarjetas de crédito.
+- **CreditCardFactoryMethod**: Clase abstracta que define el método `CreateProduct`.
+- **MoneyBackFactoryMethod, PlatinumFactoryMethod y TitaniumFactoryMethod**: Fábricas concretas que crean instancias de cada tipo de tarjeta.
+- **CreditCardFactory**: Cliente que utiliza el Factory Method para obtener la tarjeta deseada.
 
-class MoneyBack
-MoneyBack : +GetCardType() String
-MoneyBack : +GetCreditLimit() Int
-MoneyBack : +GetAnnualCharge() Int
+Puedes visualizar el diagrama UML en el siguiente archivo:  
 
-class MoneyBackFactoryMethod
-MoneyBackFactoryMethod : +CreateProduct() ICreditCard
-
-class Platinum
-Platinum : +GetCardType() String
-Platinum : +GetCreditLimit() Int
-Platinum : +GetAnnualCharge() Int
-
-class PlatinumFactoryMethod
-PlatinumFactoryMethod : +CreateProduct() ICreditCard
-
-class Titanium
-Titanium : +GetCardType() String
-Titanium : +GetCreditLimit() Int
-Titanium : +GetAnnualCharge() Int
-
-class TitaniumFactoryMethod
-TitaniumFactoryMethod : +CreateProduct() ICreditCard
-
-ICreditCard <|.. MoneyBack
-CreditCardFactoryMethod <|-- MoneyBackFactoryMethod
-ICreditCard <|.. Platinum
-CreditCardFactoryMethod <|-- PlatinumFactoryMethod
-ICreditCard <|.. Titanium
-CreditCardFactoryMethod <|-- TitaniumFactoryMethod
+👉 [Ver diagrama Mermaid](mermaid.md)
