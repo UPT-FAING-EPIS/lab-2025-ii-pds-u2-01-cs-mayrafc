@@ -38,8 +38,10 @@ jobs:
             -Dsonar.projectKey=proyectou_lab1
             -Dsonar.organization=proyectou
             -Dsonar.host.url=https://sonarcloud.io
-            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             -Dsonar.cs.opencover.reportsPaths=**/coverage.cobertura.xml
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
 
   publish-nuget:
     needs: build-test-analyze
