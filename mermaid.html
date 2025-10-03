@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>Dise&#241;o del Patr&#243;n Factory Method | Bank App </title>
+      <title> | Bank App </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="Dise&#241;o del Patr&#243;n Factory Method | Bank App ">
+      <meta name="title" content=" | Bank App ">
       
       
       <link rel="icon" href="favicon.ico">
@@ -16,7 +16,7 @@
       <meta name="docfx:rel" content="">
       
       
-      <meta name="docfx:docurl" content="https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-01-cs-mayrafc/blob/main/Bank/disenio.md/#L1">
+      <meta name="docfx:docurl" content="https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-01-cs-mayrafc/blob/main/Bank/mermaid.md/#L1">
       <meta name="loc:inThisArticle" content="In this article">
       <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
       <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
@@ -71,26 +71,56 @@
         </div>
 
         <article data-uid="">
-<h1 id="diseño-del-patrón-factory-method">Diseño del Patrón Factory Method</h1>
 
-<p>Este documento describe el diseño del patrón <strong>Factory Method</strong> aplicado al dominio de las tarjetas de crédito.</p>
-<p>El objetivo del patrón es <strong>definir una interfaz para crear objetos</strong>, pero dejar que las subclases decidan qué clase instanciar.<br>
-De esta manera se promueve la <strong>desacoplación</strong> entre el código cliente y las clases concretas que implementan la interfaz común.</p>
-<p>El diseño incluye los siguientes elementos principales:</p>
-<ul>
-<li><strong>ICreditCard</strong>: Interfaz común para todas las tarjetas de crédito.</li>
-<li><strong>MoneyBack, Platinum y Titanium</strong>: Implementaciones concretas de tarjetas de crédito.</li>
-<li><strong>CreditCardFactoryMethod</strong>: Clase abstracta que define el método <code>CreateProduct</code>.</li>
-<li><strong>MoneyBackFactoryMethod, PlatinumFactoryMethod y TitaniumFactoryMethod</strong>: Fábricas concretas que crean instancias de cada tipo de tarjeta.</li>
-<li><strong>CreditCardFactory</strong>: Cliente que utiliza el Factory Method para obtener la tarjeta deseada.</li>
-</ul>
-<p>Puedes visualizar el diagrama UML en el siguiente archivo:</p>
-<p>👉 <a href="mermaid.html">Ver diagrama Mermaid</a></p>
+<pre><code class="lang-mermaid">classDiagram
+
+class CreditCardFactoryMethod
+CreditCardFactoryMethod : +CreateProduct() ICreditCard
+
+class CreditCardFactory
+CreditCardFactory : +GetCreditCard() ICreditCard
+
+class ICreditCard
+ICreditCard : +GetCardType() String
+ICreditCard : +GetCreditLimit() Int
+ICreditCard : +GetAnnualCharge() Int
+
+class MoneyBack
+MoneyBack : +GetCardType() String
+MoneyBack : +GetCreditLimit() Int
+MoneyBack : +GetAnnualCharge() Int
+
+class MoneyBackFactoryMethod
+MoneyBackFactoryMethod : +CreateProduct() ICreditCard
+
+class Platinum
+Platinum : +GetCardType() String
+Platinum : +GetCreditLimit() Int
+Platinum : +GetAnnualCharge() Int
+
+class PlatinumFactoryMethod
+PlatinumFactoryMethod : +CreateProduct() ICreditCard
+
+class Titanium
+Titanium : +GetCardType() String
+Titanium : +GetCreditLimit() Int
+Titanium : +GetAnnualCharge() Int
+
+class TitaniumFactoryMethod
+TitaniumFactoryMethod : +CreateProduct() ICreditCard
+
+ICreditCard &lt;|.. MoneyBack
+CreditCardFactoryMethod &lt;|-- MoneyBackFactoryMethod
+ICreditCard &lt;|.. Platinum
+CreditCardFactoryMethod &lt;|-- PlatinumFactoryMethod
+ICreditCard &lt;|.. Titanium
+CreditCardFactoryMethod &lt;|-- TitaniumFactoryMethod
+</code></pre>
 
 </article>
 
         <div class="contribution d-print-none">
-          <a href="https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-01-cs-mayrafc/blob/main/Bank/disenio.md/#L1" class="edit-link">Edit this page</a>
+          <a href="https://github.com/UPT-FAING-EPIS/lab-2025-ii-pds-u2-01-cs-mayrafc/blob/main/Bank/mermaid.md/#L1" class="edit-link">Edit this page</a>
         </div>
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
