@@ -59,3 +59,4 @@ jobs:
 
       - name: Publish NuGet package to GitHub Packages
         run: dotnet nuget push "./nupkgs/*.nupkg" --source "https://nuget.pkg.github.com/mayrafc/index.json" --api-key ${{ secrets.GITHUB_TOKEN }}
+# s
