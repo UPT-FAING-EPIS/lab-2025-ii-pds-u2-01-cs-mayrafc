@@ -1,0 +1,35 @@
+name: Release Version
+
+on:
+  push:
+    tags:
+      - "v*"   # cada vez que subas un tag que empiece con v (ejemplo: v1.0.0)
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build NuGet package
+        run: dotnet pack Bank/Bank.Domain/Bank.Domain.csproj --configuration Release --output ./nupkgs
+
+      - name: Upload NuGet package as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Bank.Domain-nuget
+          path: ./nupkgs/*.nupkg
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./nupkgs/*.nupkg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
