@@ -36,12 +36,9 @@ Titanium : +GetAnnualCharge() Int
 class TitaniumFactoryMethod
 TitaniumFactoryMethod : +CreateProduct() ICreditCard
 
-
 ICreditCard <|.. MoneyBack
 CreditCardFactoryMethod <|-- MoneyBackFactoryMethod
 ICreditCard <|.. Platinum
 CreditCardFactoryMethod <|-- PlatinumFactoryMethod
 ICreditCard <|.. Titanium
 CreditCardFactoryMethod <|-- TitaniumFactoryMethod
-
-```
